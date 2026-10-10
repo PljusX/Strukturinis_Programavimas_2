@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 using namespace std;
 
 string vardai[100];
@@ -114,7 +115,6 @@ void visi() {
     }
 }
 
-
 void vienas() {
     if (mokKiek == 0) {
         cout << "Mokiniu sarasas tuscias!\n";
@@ -217,15 +217,40 @@ void vidurkis() {
 
             vid = (double)suma / kiek[nr - 1];
 
-            cout << fixed << setprecision(2);
-            cout << "Mokinio " << vardai[nr - 1] << " vidurkis: " << vid << endl;
+            cout << fixed << setprecision(2) << "Mokinio " << vardai[nr - 1] << " vidurkis: " << vid << endl;
         }
     }
 }
 
+void salint() {
+    if (mokKiek == 0) {
+        cout << "Mokiniu sarasas tuscias!\n";
+    }
+    else {
+        int nr;
 
-void salint() {//pasalinimas mokynio xdd
+        cout << "Iveskite mokinio numeri nuo 1 iki "
+             << mokKiek << ": ";
+        cin >> nr;
+
+        while (nr < 1 || nr > mokKiek) {
+            cout << "Neteisingas numeris! Bandykite dar karta: ";
+            cin >> nr;
+        }
+
+        for (int i = nr - 1; i < mokKiek - 1; i++) {
+            vardai[i] = vardai[i + 1];
+            kiek[i] = kiek[i + 1];
+
+            for (int j = 0; j < 10; j++) {
+                paz[i][j] = paz[i + 1][j];
+            }
+        }
+
+        mokKiek--; // susimazinu kieki totaliu mokiniu, nes kadangi persikeliau pvz antra i pirma ir tada nuo 0 iki 1 eina
+
+        cout << "Mokinys pasalintas!\n";
+    }
 }
-
 //sau; g++ antramain.cpp -o programa.exe 
 // .\programa.exe
