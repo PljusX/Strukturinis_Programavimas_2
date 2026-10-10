@@ -72,7 +72,7 @@ void ivestMok() {
         cin >> vardai[mokKiek];
 
         cout << "Kiek pazymiu turi mokinys? ";
-        cin >> kiek[mokKiek];
+        cin >> kiek[mokKiek]; // ČIA DAR TURIU PROBLEMĄ, KAI 0 parašai, prideda mokinį su 0 pažymių, tai reiks pažiūrėti.
 
         while (kiek[mokKiek] < 0 || kiek[mokKiek] > 10) {
             cout << "Iveskite skaiciu nuo 0 iki 10: ";
@@ -114,7 +114,31 @@ void visi() {
     }
 }
 
-void vienas() { //tik viena mokiny parodyt
+void vienas() {
+    if (mokKiek == 0) {
+        cout << "Mokiniu sarasas tuscias!\n";
+    }
+    else {
+        int nr;
+
+        cout << "Iveskite mokinio numeri nuo 1 iki "
+             << mokKiek << ": ";
+        cin >> nr;
+
+        while (nr < 1 || nr > mokKiek) {
+            cout << "Neteisingas numeris! Bandykite dar karta: ";
+            cin >> nr;
+        }
+
+        cout << "\nMokinys: " << vardai[nr - 1] << endl;
+        cout << "Pazymiai: ";
+
+        for (int i = 0; i < kiek[nr - 1]; i++) {
+            cout << paz[nr - 1][i] << " ";
+        }
+
+        cout << endl;
+    }
 }
 
 void atnauj() { //pakeitimas pazymku
