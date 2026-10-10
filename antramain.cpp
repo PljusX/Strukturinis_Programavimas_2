@@ -72,7 +72,7 @@ void ivestMok() {
         cin >> vardai[mokKiek];
 
         cout << "Kiek pazymiu turi mokinys? ";
-        cin >> kiek[mokKiek]; // ČIA DAR TURIU PROBLEMĄ, KAI 0 parašai, prideda mokinį su 0 pažymių, tai reiks pažiūrėti.
+        cin >> kiek[mokKiek];
 
         while (kiek[mokKiek] < 0 || kiek[mokKiek] > 10) {
             cout << "Iveskite skaiciu nuo 0 iki 10: ";
@@ -114,6 +114,7 @@ void visi() {
     }
 }
 
+
 void vienas() {
     if (mokKiek == 0) {
         cout << "Mokiniu sarasas tuscias!\n";
@@ -141,11 +142,87 @@ void vienas() {
     }
 }
 
-void atnauj() { //pakeitimas pazymku
+void atnauj() {
+    if (mokKiek == 0) {
+        cout << "Mokiniu sarasas tuscias!\n";
+    }
+    else {
+        int nr, pnr; // nr yra mokinio eilute, o pnr yra pazymio stulpelis*
+
+        cout << "Iveskite mokinio numeri nuo 1 iki "
+             << mokKiek << ": ";
+        cin >> nr;
+
+        while (nr < 1 || nr > mokKiek) {
+            cout << "Neteisingas numeris! Bandykite dar karta: ";
+            cin >> nr;
+        }
+
+        if (kiek[nr - 1] == 0) {
+            cout << "Mokinys neturi pazymiu!\n";
+        }
+        else {
+            cout << "Pazymiai: ";
+
+            for (int i = 0; i < kiek[nr - 1]; i++) {
+                cout << i + 1 << ". " << paz[nr - 1][i] << endl;
+            }
+
+            cout << "Kuri pazymi norite pakeisti? ";
+            cin >> pnr;
+
+            while (pnr < 1 || pnr > kiek[nr - 1]) {
+                cout << "Neteisingas pazymio numeris! Bandykite dar karta: ";
+                cin >> pnr;
+            }
+
+            cout << "Iveskite nauja pazymi (1-10): ";
+            cin >> paz[nr - 1][pnr - 1];
+
+            while (paz[nr - 1][pnr - 1] < 1 || paz[nr - 1][pnr - 1] > 10) {
+                cout << "Pazymys turi buti nuo 1 iki 10: ";
+                cin >> paz[nr - 1][pnr - 1];
+            }
+
+            cout << "Pazymys pakeistas!\n";
+        }
+    }
 }
 
-void vidurkis() {//vidurkis pazymiu
+void vidurkis() {
+    if (mokKiek == 0) {
+        cout << "Mokiniu sarasas tuscias!\n";
+    }
+    else {
+        int nr;
+        int suma = 0;
+        double vid;
+
+        cout << "Iveskite mokinio numeri nuo 1 iki "
+             << mokKiek << ": ";
+        cin >> nr;
+
+        while (nr < 1 || nr > mokKiek) {
+            cout << "Neteisingas numeris! Bandykite dar karta: ";
+            cin >> nr;
+        }
+
+        if (kiek[nr - 1] == 0) {
+            cout << "Mokinys neturi pazymiu!\n";
+        }
+        else {
+            for (int i = 0; i < kiek[nr - 1]; i++) {
+                suma = suma + paz[nr - 1][i];
+            }
+
+            vid = (double)suma / kiek[nr - 1];
+
+            cout << fixed << setprecision(2);
+            cout << "Mokinio " << vardai[nr - 1] << " vidurkis: " << vid << endl;
+        }
+    }
 }
+
 
 void salint() {//pasalinimas mokynio xdd
 }
