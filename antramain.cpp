@@ -16,7 +16,7 @@ void salint();
 
 int main() {
     int pasirinkimas;
-    bool veikia = true;
+    bool veikia = true; // apie tai kalbu (cia sau pasilieku)
 
     while (veikia == true) {
         meniu();
@@ -41,7 +41,7 @@ int main() {
             salint();
         }
         else if (pasirinkimas == 7) {
-            veikia = false;
+            veikia = false; // čia vietoj to, kad naudoti dar vieną if masyva, tiesiog while'as boolo naudojamas***
         }
         else {
             cout << "Neteisingas pasirinkimas!\n";
@@ -49,3 +49,15 @@ int main() {
     }
 
     return 0;
+
+void meniu() {
+    cout << "\n1. Ivesti mokini\n";
+    cout << "2. Perziureti visus mokinius\n";
+    cout << "3. Perziureti mokini\n";
+    cout << "4. Atnaujinti pazymi\n";
+    cout << "5. Mokinio vidurkis\n";
+    cout << "6. Pasalinti mokini\n";
+    cout << "7. Iseiti\n";
+    cout << "Pasirinkite: ";
+}
+
