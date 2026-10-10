@@ -61,3 +61,20 @@ void meniu() {
     cout << "Pasirinkite: ";
 }
 
+void ivestMok() { //mok+paz
+}
+
+void visi() { //rodysu visus mokinius
+}
+
+void vienas() { //tik viena mokiny parodyt
+}
+
+void atnauj() { //pakeitimas pazymku
+}
+
+void vidurkis() {//vidurkis pazymiu
+}
+
+void salint() {//pasalinimas mokynio xdd
+}
