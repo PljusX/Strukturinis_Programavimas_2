@@ -63,7 +63,37 @@ void meniu() {
     cout << "Pasirinkite: ";
 }
 
-void ivestMok() { //mok+paz
+void ivestMok() {
+    if (mokKiek >= 100) {
+        cout << "Mokiniu sarasas pilnas!\n";
+    }
+    else {
+        cout << "Iveskite mokinio varda: ";
+        cin >> vardai[mokKiek];
+
+        cout << "Kiek pazymiu turi mokinys? ";
+        cin >> kiek[mokKiek];
+
+        while (kiek[mokKiek] < 0 || kiek[mokKiek] > 10) {
+            cout << "Iveskite skaiciu nuo 0 iki 10: ";
+            cin >> kiek[mokKiek];
+        }
+
+        for (int i = 0; i < kiek[mokKiek]; i++) {
+            cout << "Iveskite " << i + 1 << " pazymi: ";
+            cin >> paz[mokKiek][i];
+
+            while (paz[mokKiek][i] < 1 ||
+                   paz[mokKiek][i] > 10) {
+                cout << "Pazymys turi buti nuo 1 iki 10: ";
+                cin >> paz[mokKiek][i];
+            }
+        }
+
+        mokKiek++;
+
+        cout << "Mokinys pridetas!\n";
+    }
 }
 
 void visi() { //rodysu visus mokinius
