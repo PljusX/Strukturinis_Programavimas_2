@@ -96,7 +96,22 @@ void ivestMok() {
     }
 }
 
-void visi() { //rodysu visus mokinius
+void visi() {
+    if (mokKiek == 0) {
+        cout << "Mokiniu sarasas tuscias!\n";
+    }
+    else {
+        for (int i = 0; i < mokKiek; i++) {
+            cout << "\nMokinys: " << vardai[i] << endl;
+            cout << "Pazymiai: ";
+
+            for (int j = 0; j < kiek[i]; j++) {
+                cout << paz[i][j] << " ";
+            }
+
+            cout << endl;
+        }
+    }
 }
 
 void vienas() { //tik viena mokiny parodyt
@@ -110,3 +125,6 @@ void vidurkis() {//vidurkis pazymiu
 
 void salint() {//pasalinimas mokynio xdd
 }
+
+//sau; g++ antramain.cpp -o programa.exe 
+// .\programa.exe
