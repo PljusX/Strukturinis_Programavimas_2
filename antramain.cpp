@@ -49,7 +49,7 @@ int main() {
     }
 
     return 0;
-
+}
 void meniu() {
     cout << "\n1. Ivesti mokini\n";
     cout << "2. Perziureti visus mokinius\n";
